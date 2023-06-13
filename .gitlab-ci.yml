@@ -1,0 +1,33 @@
+include:
+    - project: ''
+      ref: 
+      file: 
+
+stages:
+  - 
+  - build
+  - test
+  - deploy
+  - loadtest-local
+
+image:
+  name: ubuntu:latest
+
+build:
+  stage: build
+  script:
+    - echo "building my application in ubuntu container..."
+
+deploy:
+  stage: deploy
+  script:
+    - echo "deploying my application in ubuntu container..."
+
+loadtest-local:
+  image:
+    name: loadimpact/k6:latest
+    entrypoint: [""]
+  stage: loadtest-local
+  script:
+    - echo "executing local k6 in k6 container..."
+    - k6 run -e env=plab01 deepPublish.js
